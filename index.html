@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styling.css"/>
+    <!-- Impor script kamu di sini -->
+    <!-- Lampirkan `defer` jika pemanggilan dilakukan dalam <head> -->
+
+  </head>
+  <body>
+    <header class="head_bar">
+      <h1 class="head_bar_title">Bookshelf App</h1>
+      <img src="img/logobuku-removebg-preview.png" alt="logo" width="100"
+      class="gambar">
+
+      <div class="audio-controls">
+        <audio id="backgroundMusic" src="img/sunset (feat. Cory Wong & Plini).mp3" type="audio/mpeg"></audio>
+        <button id="playMusicButton">Play Music</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="input_section" id="inputSection">
+        <h2 id="h2InputSection">Tambah Buku Baru</h2>
+        <form id="bookForm" data-testid="bookForm">
+          <div class="input" id="sectionTitle">
+            <label for="bookFormTitle">Judul</label>
+            <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput" />
+            <small class="error-display" id="errorTitle">Wajib Diisi</small>
+          </div>
+          <div class="input" id="sectionAuthor">
+            <label for="bookFormAuthor">Penulis</label>
+            <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput" />
+            <small class="error-display" id="errorAuthor">Wajib Diisi</small>
+          </div>
+          <div class="input" id="sectionYear">
+            <label for="bookFormYear">Tahun</label>
+            <input id="bookFormYear" type="number" required data-testid="bookFormYearInput" />
+            <small class="error-display" id="errorYear">Wajib Diisi</small>
+          </div>
+          <div class="input_inline">
+            <label for="bookFormIsComplete">Selesai dibaca</label>
+            <input
+              id="bookFormIsComplete"
+              type="checkbox"
+              data-testid="bookFormIsCompleteCheckbox"
+            />
+          </div>
+          <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
+            Masukkan Buku ke rak <span id="TipeBuku"><strong>Belum dibaca</strong></span>
+          </button>
+        </form> 
+      </section>
+
+      <section class="search_section" id="searchSection">
+        <img src="img/output-onlinegiftools.gif" alt="book" width="100" class="book_gift">
+        <h2 id="searchSectionH2">Cari Buku</h2>
+        <form id="searchBook" style="overflow-x: scroll" data-testid="searchBookForm">
+          <label for="searchBookTitle" class="Judul">Judul</label>
+          <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput" />
+          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+            Cari
+          </button>
+        </form>
+
+        <div id="searchResult" class="book_list" style="width: 100%"></div>
+      </section>
+
+      <section class="book_shelf" id="bookShelfUncompleted">
+        <h2 id="uncompletedH2">Belum selesai dibaca</h2>
+
+        <div id="incompleteBookList" class="book_list" data-testid="incompleteBookList">
+          <!-- 
+            Ini adalah struktur HTML untuk masing-masing buku.
+            Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+          -->
+          <div data-bookid="123123123" data-testid="bookItem">
+            <h3 data-testid="bookItemTitle"></h3>
+            <p data-testid="bookItemAuthor"></p>
+            <p data-testid="bookItemYear"></p>
+            <div class="button_list" id="buttonList">
+              <button data-testid="bookItemIsCompleteButton">Selesai dibaca</button>
+              <button data-testid="bookItemDeleteButton">Hapus Buku</button>
+              <button data-testid="bookItemEditButton">Edit Buku</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="book_shelf" id="bookShelfcompleted">
+        <h2 id="completedH2">Selesai dibaca</h2>
+        <div id="completeBookList" class="book_list" data-testid="completeBookList">
+          <!-- 
+            Ini adalah struktur HTML untuk masing-masing buku.
+            Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+          -->
+          <div data-bookid="456456456" data-testid="bookItem">
+            <h3 data-testid="bookItemTitle"></h3>
+            <p data-testid="bookItemAuthor"></p>
+            <p data-testid="bookItemYear"></p>
+            <div class="button_list" id="buttonList">
+              <button data-testid="bookItemIsCompleteButton">Belum selesai dibaca</button>
+              <button data-testid="bookItemDeleteButton">Hapus Buku</button>
+              <button data-testid="bookItemEditButton">Edit Buku</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/dom.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/storage.js"></script>
+  </body>
+</html>
